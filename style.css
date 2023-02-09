@@ -1,0 +1,61 @@
+:root {
+  --clr-red: #f93d66;
+  --clr-purple: #6d47d9;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: url("assets/topography.svg"),
+    linear-gradient(to right, var(--clr-red), var(--clr-purple));
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 100px);
+  grid-auto-rows: 100px;
+}
+
+.col-2 {
+  grid-column: span 2;
+}
+
+.col-3 {
+  grid-column: span 3;
+}
+
+.col-4 {
+  grid-column: span 4;
+}
+
+.row-2 {
+  grid-row: span 2;
+}
+
+.row-3 {
+  grid-row: span 3;
+}
+
+.row-4 {
+  grid-row: span 4;
+}
