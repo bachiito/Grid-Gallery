@@ -1,10 +1,12 @@
 :root {
+  --clr-white: #ffffff;
+  --clr-black: rgba(12, 5, 5, 0.767);
   --clr-red: #f93d66;
   --clr-purple: #6d47d9;
   --clr-transparent-yellow: #ffc60032;
   --clr-transparent-dark: rgba(0, 0, 0, 0.65);
 
-  --img-height: -100px;
+  --img-height: 0px;
 }
 
 html {
@@ -75,13 +77,16 @@ body {
   top: 50%;
   left: 50%;
   translate: -50% -50%;
-  text-transform: uppercase;
-  padding: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: capitalize;
 }
 
 .gallery__item:hover::after {
-  content: "view ";
-  background-color: white;
+  content: "view →";
+  color: var(--clr-white);
+  padding: 0.25em;
+  background-color: var(--clr-black);
 }
 
 .col-2 {
@@ -122,10 +127,13 @@ body {
   position: absolute;
   cursor: pointer;
   border: none;
+  background-color: var(--clr-black);
   outline: none;
 }
 
 .close::after {
   content: "\00d7";
+  color: var(--clr-white);
   font-size: 1rem;
+  font-weight: 700;
 }
