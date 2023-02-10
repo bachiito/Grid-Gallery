@@ -15,23 +15,24 @@ const itemsSize = Array.from({ length: 50 }, () => [
 const gridHTML = itemsSize.map(generateGridItem).join("");
 gallery.innerHTML = gridHTML;
 
-const galleryItems = Array.from(document.querySelectorAll(".gallery__item"));
-galleryItems.map(showModal);
-galleryItems.map(imgOverlay);
+const galleryItems = document.querySelectorAll(".gallery__item");
+galleryItems.forEach(item => item.addEventListener("click", showModal));
+galleryItems.forEach(item => item.addEventListener("mouseover", imgOverlay));
 
 closeBtn.addEventListener("click", () => modal.close());
 
-function showModal(item) {
-  item.addEventListener("click", () => {
-    const imgCopy = item.lastElementChild.cloneNode(true);
+function showModal(e) {
+  const imgCopy =
+    e.target.lastElementChild.tagName === "IMG"
+      ? e.target.lastElementChild.cloneNode(true)
+      : null;
 
-    if (modal.childElementCount > 1) {
-      modal.removeChild(modal.lastElementChild);
-    }
+  if (modal.childElementCount > 1) {
+    modal.removeChild(modal.lastElementChild);
+  }
 
-    modal.appendChild(imgCopy);
-    modal.showModal();
-  });
+  modal.appendChild(imgCopy);
+  modal.showModal();
 }
 
 function generateGridItem([col, row]) {
@@ -42,13 +43,11 @@ function generateGridItem([col, row]) {
   `;
 }
 
-function imgOverlay(item) {
-  item.addEventListener("mouseover", () => {
-    document.documentElement.style.setProperty(
-      "--img-height",
-      `-${item.offsetHeight}px`
-    );
-  });
+function imgOverlay(e) {
+  document.documentElement.style.setProperty(
+    "--img-height",
+    `-${e.target.offsetHeight}px`
+  );
 }
 
 function randomNumber(limit) {
